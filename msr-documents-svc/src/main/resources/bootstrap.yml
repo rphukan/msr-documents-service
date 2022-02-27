@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: documents-service
+  cloud:
+    config:
+      label: lending
+      discovery:
+        enabled: ${com.msr.configserver.enabled:true}
+        serviceId: config-server
+
+eureka:
+  client:
+    securePortEnabled: true
+    serviceUrl:
+      defaultZone: ${com.msr.eureka.url}
+
+server:
+  ssl:
+    key-alias: documents-service
+    key-password: password
+    key-store: classpath:keystore-local.jks
+    key-store-password: password
+    trust-store: classpath:truststore-local.jks
+    trust-store-password: password
+    client-auth: want
+    #client-auth: need

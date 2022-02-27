@@ -1,0 +1,68 @@
+spring:
+  profiles: local
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 3KB
+      max-file-size: 2MB
+      max-request-size: 20MB
+      location: ${java.io.tmpdir}
+
+server:
+  port: 8184
+
+eureka:
+  instance:
+    preferIpAddress: true
+    nonSecurePortEnabled: false
+    securePortEnabled: true
+    securePort: ${server.port}
+    statusPageUrl: https://localhost:${server.port}/info
+    healthCheckUrl: https://localhost:${server.port}/health
+    homePageUrl: https://localhost:${server.port}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+info:
+  app:
+    name: ${spring.application.name}
+    description: documents service
+
+msr:
+  mongodb:
+    sslEnabled: false
+    connectionString: mongodb://localhost:27017
+    database: docstore
+  security:
+    oauth2:
+      enabled: false
+      issuers: https://localhost:8443/auth/realms/HDFC,https://localhost:8443/auth/realms/BAJAJFIN,https://localhost:8443/auth/realms/MSR
+    hardcoded: #gets activated when oauth2.enabled = false
+      user: ranjan.phukan@msrfintech.com
+      tenantId: msr
+      authorities:
+        - LENDING.loan_application_view
+        - LENDING.loan_application_edit
+springdoc:
+  swagger-ui:
+    oauth:
+      clientId: lending_swagger
+      clientSecret: f6fa4c15-772a-445a-b7b6-b63992aad8e8
+      #user: swagger_dsa, swagger_dsa
+  oAuthFlow:
+    authorizationUrl: https://localhost:8443/auth/realms/MSR/protocol/openid-connect/auth
+    tokenUrl: https://localhost:8443/auth/realms/MSR/protocol/openid-connect/token
+
+logging:
+  level:
+    root: INFO
+    com.msr.lending: DEBUG
+    com.netflix.zuul: INFO
+    com.msr.documents: DEBUG
+    org.springframework.web: INFO
+    org.springframework.security: DEBUG
+    org.springframework.data.mongodb: DEBUG
+

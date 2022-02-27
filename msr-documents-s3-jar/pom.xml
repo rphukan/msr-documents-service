@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.msr</groupId>
+		<artifactId>msr-documents-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../msr-documents-parent/pom.xml</relativePath>
+	</parent>
+	<groupId>com.msr</groupId>
+	<artifactId>msr-documents-s3-jar</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>msr-documents-s3-jar</name>
+	<description>jar for storing the documents on aws s3</description>
+
+	<properties>
+		<aws.java.sdk.version>2.15.7</aws.java.sdk.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.msr</groupId>
+			<artifactId>msr-documents-common-jar</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-s3</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.msr</groupId>
+			<artifactId>msr-security-auth-jar</artifactId>
+		</dependency>
+	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>software.amazon.awssdk</groupId>
+				<artifactId>bom</artifactId>
+				<version>2.15.7</version>
+				<type>pom</type>
+			</dependency>
+			<dependency>
+				<groupId>com.amazonaws</groupId>
+				<artifactId>aws-java-sdk-bom</artifactId>
+				<version>1.12.161</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+</project>
