@@ -6,7 +6,7 @@ The `parent pom` for the maven projects.
 The common interface for the different implementations of the documents-svc.
 
 ## msr-documents-mongo-jar
-The `MongoDB` based implementation of the `documents-svc` where the documents are stored in a `Mongod document database`.
+The `MongoDB` based implementation of the `documents-svc` where the documents are stored in a `Mongo document database`.
 
 ## msr-documents-s3-jar
 The `AWS S3` based implementation of the `documents-svc` where the documents are stored in `AWS S3`. Note that `documents-svc` still uses `MongoDB` for storing the document's information where as the actual docuement is stored in S3.
