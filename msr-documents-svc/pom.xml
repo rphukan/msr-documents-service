@@ -19,7 +19,7 @@
     <profile>
       <id>aws</id>
       <activation>
-        <activeByDefault>true</activeByDefault>
+        <activeByDefault>false</activeByDefault>
       </activation>
       <dependencies>
         <dependency>
@@ -30,9 +30,9 @@
       </dependencies>
     </profile>
     <profile>
-      <id>local</id>
+      <id>mongo</id>
       <activation>
-        <activeByDefault>false</activeByDefault>
+        <activeByDefault>true</activeByDefault>
       </activation>
       <dependencies>
         <dependency>

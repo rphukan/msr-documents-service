@@ -34,12 +34,12 @@ info:
 msr:
   mongodb:
     sslEnabled: false
-    connectionString: mongodb://localhost:27017
+    connectionString: ${mongodb.url:mongodb://localhost:27017}
     database: docstore
   security:
     oauth2:
       enabled: false
-      issuers: https://localhost:8443/auth/realms/HDFC,https://localhost:8443/auth/realms/BAJAJFIN,https://localhost:8443/auth/realms/MSR
+      issuers: ${com.msr.keycloak.url:https://localhost:8443/auth}/realms/master
     hardcoded: #gets activated when oauth2.enabled = false
       user: ranjan.phukan@msrfintech.com
       tenantId: msr
@@ -48,13 +48,14 @@ msr:
         - LENDING.loan_application_edit
 springdoc:
   swagger-ui:
+    path: /${spring.application.name}/swagger-ui.html
     oauth:
       clientId: lending_swagger
       clientSecret: f6fa4c15-772a-445a-b7b6-b63992aad8e8
       #user: swagger_dsa, swagger_dsa
   oAuthFlow:
-    authorizationUrl: https://localhost:8443/auth/realms/MSR/protocol/openid-connect/auth
-    tokenUrl: https://localhost:8443/auth/realms/MSR/protocol/openid-connect/token
+    authorizationUrl: ${com.msr.keycloak.url:https://localhost:8443/auth}/realms/master/protocol/openid-connect/auth
+    tokenUrl: ${com.msr.keycloak.url:https://localhost:8443/auth}/realms/master/protocol/openid-connect/token
 
 logging:
   level:
